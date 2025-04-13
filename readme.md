@@ -37,19 +37,26 @@ npm i
  Crie um arquivo .env na raiz com:
  ```bash
 MONGO_URI=mongodb://localhost:27017/clash_royale
+PORT=3000
 ```
 Ou utilize sua string personalizada do MongoDB Atlas.
 
-### 4. Rodar o seed
+### 4. Rodar a API
+
 ```bash
-npx tsx seeds.ts
+npm run dev
 ```
 
-### 5. Executar uma das consultas
+### 5. Rodar o seed
 ```bash
-npx tsx queries/consulta_1.ts
+npm run seed
 ```
-Troque query1.ts por qualquer uma das análises desejadas.
+
+### 6. Executar uma das consultas
+```bash
+npx ts-node src/queries/consulta_1.ts
+```
+Troque consulta_1.ts por qualquer uma das análises desejadas.
 
 ## 🧠 Consultas Implementadas
 
