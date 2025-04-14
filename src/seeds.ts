@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-
 import { connectDB } from "./config/db";
 import { Player } from "./models/Player";
 import { Card } from "./models/Card";
@@ -50,7 +49,7 @@ async function seedDatabase() {
       level: 10,
     });
 
-    // 🃏 Cartas
+    // 🃏 Cartas (expandido com mais cartas para não se repetir)
     const cardsData = [
       { name: "Cavaleiro", rarity: "comum", type: "tropa", damage: 110, elixirCost: 3 },
       { name: "Arqueiras", rarity: "comum", type: "tropa", damage: 95, elixirCost: 3 },
@@ -60,6 +59,17 @@ async function seedDatabase() {
       { name: "Mosqueteira", rarity: "comum", type: "tropa", damage: 160, elixirCost: 4 },
       { name: "Torre Inferno", rarity: "épica", type: "estrutura", damage: 40, elixirCost: 5 },
       { name: "Zap", rarity: "comum", type: "feitiço", damage: 75, elixirCost: 2 },
+      { name: "Dragão Infernal", rarity: "épica", type: "tropa", damage: 400, elixirCost: 5 },
+      { name: "Príncipe", rarity: "rara", type: "tropa", damage: 400, elixirCost: 5 },
+      { name: "Gigante", rarity: "rara", type: "tropa", damage: 500, elixirCost: 6 },
+      { name: "Horda de Espinhos", rarity: "rara", type: "tropa", damage: 50, elixirCost: 3 },
+      { name: "Feitiço de Congelamento", rarity: "épica", type: "feitiço", damage: 0, elixirCost: 5 },
+      { name: "Tornado", rarity: "épica", type: "feitiço", damage: 0, elixirCost: 3 },
+      { name: "Golem", rarity: "épica", type: "tropa", damage: 700, elixirCost: 8 },
+      { name: "Tesla", rarity: "rara", type: "estrutura", damage: 200, elixirCost: 4 },
+      { name: "Cemitério", rarity: "épica", type: "feitiço", damage: 50, elixirCost: 5 },
+      { name: "X-Besta", rarity: "épica", type: "estrutura", damage: 150, elixirCost: 6 },
+      { name: "Bárbaros", rarity: "comum", type: "tropa", damage: 130, elixirCost: 5 },
     ];
 
     const cards = await Card.insertMany(cardsData);

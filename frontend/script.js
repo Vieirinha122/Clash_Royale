@@ -76,6 +76,14 @@ async function buscarDerrotasPorCombo() {
   const combo = prompt("Digite os nomes das cartas separadas por vírgula (ex: Cavaleiro,Zap)");
   if (!combo) return;
 
+  // Mapa de nomes para IDs de deck
+  const nomesDecks = {
+    "67fcef117850606961513449": "Deck Sombra",
+    "67fcef11785060696151344b": "Deck Vermelho",
+    "67fcef11785060696151344d": "Deck Gelo",
+    // adicione mais conforme precisar
+  };
+
   try {
     const response = await fetch(`http://localhost:3000/api/derrotas-por-combo?combo=${encodeURIComponent(combo)}`);
     const data = await response.json();
@@ -88,8 +96,9 @@ async function buscarDerrotasPorCombo() {
     } else {
       const lista = document.createElement("ul");
       data.decksDerrotados.forEach((deck) => {
+        const nome = nomesDecks[deck._id] || `Deck ${deck._id}`; // Usa nome se existir, senão mostra ID
         const item = document.createElement("li");
-        item.textContent = `Deck ${deck._id} teve ${deck.derrotas} derrota(s) com esse combo.`;
+        item.textContent = `${nome} teve ${deck.derrotas} derrota(s) com esse combo.`;
         lista.appendChild(item);
       });
       resultado.appendChild(lista);
@@ -102,8 +111,16 @@ async function buscarDerrotasPorCombo() {
 
 async function buscarDecksComMaisTrofeus() {
   const minDiff = prompt("Digite a diferença mínima de troféus entre vencedor e perdedor:");
-
   if (!minDiff) return;
+
+  // Mapa de nomes para IDs de deck
+  const nomesDecks = {
+    "67fcef117850606961513449": "Deck Sombra",
+    "67fcef11785060696151344b": "Deck Vermelho",
+    "67fcef11785060696151344d": "Deck Gelo",
+    "67fc2f80f72f919362176dac": "Deck Real"
+    // adicione mais conforme precisar
+  };
 
   try {
     const response = await fetch(`http://localhost:3000/api/decks-vitoriosos-contra-mais-fortes?minDiff=${minDiff}`);
@@ -117,8 +134,9 @@ async function buscarDecksComMaisTrofeus() {
     } else {
       const lista = document.createElement("ul");
       data.decks.forEach((deck) => {
+        const nome = nomesDecks[deck._id] || `Deck ${deck._id}`; // Usa nome se existir, senão mostra ID
         const item = document.createElement("li");
-        item.textContent = `Deck ${deck._id} venceu ${deck.vitorias} vez(es) contra oponentes com +${minDiff} troféus.`;
+        item.textContent = `${nome} venceu ${deck.vitorias} vez(es) contra oponentes com +${minDiff} troféus.`;
         lista.appendChild(item);
       });
       resultado.appendChild(lista);
