@@ -79,3 +79,89 @@ async function decksQueVenceramContraMaisFortes(minDiff = 50) {
 }
 
 decksQueVenceramContraMaisFortes(50); // Você pode ajustar o valor aqui
+
+// ABAIXO SCRIPT DE CADA CONSULTA PARA RODAR NO SHELL DO MONGODB
+
+// // ⚙️ Parâmetros
+// const porcentagemMinima = 50;
+
+// print(`📊 Iniciando consulta: Decks que venceram com diferença de troféus ≥ ${porcentagemMinima}%`);
+
+// const resultado = db.battles.aggregate([
+//   {
+//     $project: {
+//       winnerId: 1,
+//       durationSec: 1,
+//       player1: 1,
+//       player2: 1,
+//       winnerDeck: {
+//         $cond: [
+//           { $eq: ["$winnerId", "$player1.id"] },
+//           "$player1.deckId",
+//           "$player2.deckId"
+//         ]
+//       },
+//       winnerTrophies: {
+//         $cond: [
+//           { $eq: ["$winnerId", "$player1.id"] },
+//           "$player1.trophiesAtTime",
+//           "$player2.trophiesAtTime"
+//         ]
+//       },
+//       loserTrophies: {
+//         $cond: [
+//           { $eq: ["$winnerId", "$player1.id"] },
+//           "$player2.trophiesAtTime",
+//           "$player1.trophiesAtTime"
+//         ]
+//       },
+//       loserTowersDestroyed: {
+//         $cond: [
+//           { $eq: ["$winnerId", "$player1.id"] },
+//           "$player2.towersDestroyed",
+//           "$player1.towersDestroyed"
+//         ]
+//       }
+//     }
+//   },
+//   {
+//     $addFields: {
+//       diffTrophies: {
+//         $subtract: ["$loserTrophies", "$winnerTrophies"]
+//       },
+//       percDiff: {
+//         $multiply: [
+//           { $divide: [{ $subtract: ["$loserTrophies", "$winnerTrophies"] }, "$loserTrophies"] },
+//           100
+//         ]
+//       }
+//     }
+//   },
+//   {
+//     $match: {
+//       percDiff: { $gte: porcentagemMinima },
+//       durationSec: { $lt: 120 },
+//       loserTowersDestroyed: { $gte: 2 }
+//     }
+//   },
+//   {
+//     $group: {
+//       _id: "$winnerDeck",
+//       vitorias: { $sum: 1 }
+//     }
+//   },
+//   {
+//     $sort: { vitorias: -1 }
+//   }
+// ]).toArray();
+
+// if (resultado.length === 0) {
+//   print("❌ Nenhum deck venceu oponentes mais fortes com as condições especificadas.");
+// } else {
+//   print("🏆 Decks que venceram adversários mais fortes:");
+//   resultado.forEach(deck => {
+//     print(`- Deck ${deck._id} venceu ${deck.vitorias} vez(es) contra oponentes com +${porcentagemMinima}% de troféus.`);
+//   });
+// }
+
+// print("🔌 Consulta finalizada e desconectada.");

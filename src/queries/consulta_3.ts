@@ -87,3 +87,76 @@ async function calcularDerrotasPorCombo() {
 }
 
 calcularDerrotasPorCombo();
+
+// ABAIXO SCRIPT DE CADA CONSULTA PARA RODAR NO SHELL DO MONGODB
+
+// // 👇 Defina o combo de cartas desejado
+// const comboCardNames = ["Cavaleiro", "Zap"];
+
+// // 🔍 Buscar os _ids das cartas pelo nome
+// const comboCards = db.cards.find({ name: { $in: comboCardNames } }).toArray();
+// const comboCardIds = comboCards.map(card => card._id);
+
+// // ⚠️ Verificação se encontrou todas as cartas
+// if (comboCardIds.length !== comboCardNames.length) {
+//   print("❌ Algumas cartas do combo não foram encontradas.");
+// } else {
+//   const resultado = db.battles.aggregate([
+//     {
+//       $project: {
+//         player1: 1,
+//         player2: 1,
+//         loserId: {
+//           $cond: [
+//             { $eq: ["$winnerId", "$player1.id"] },
+//             "$player2.id",
+//             "$player1.id"
+//           ]
+//         },
+//         loserDeck: {
+//           $cond: [
+//             { $eq: ["$winnerId", "$player1.id"] },
+//             "$player2.deckId",
+//             "$player1.deckId"
+//           ]
+//         }
+//       }
+//     },
+//     {
+//       $lookup: {
+//         from: "decks",
+//         localField: "loserDeck",
+//         foreignField: "_id",
+//         as: "loserDeckInfo"
+//       }
+//     },
+//     { $unwind: "$loserDeckInfo" },
+//     {
+//       $project: {
+//         loserDeckId: "$loserDeck",
+//         loserId: 1,
+//         cards: "$loserDeckInfo.cards"
+//       }
+//     },
+//     {
+//       $match: {
+//         cards: { $all: comboCardIds }
+//       }
+//     },
+//     {
+//       $group: {
+//         _id: "$loserDeckId",
+//         derrotas: { $sum: 1 }
+//       }
+//     },
+//     {
+//       $sort: { derrotas: -1 }
+//     }
+//   ]).toArray();
+
+//   // 🖨️ Imprimir os resultados
+//   print(`📉 Decks que perderam usando o combo: ${comboCardNames.join(" + ")}`);
+//   resultado.forEach(deck => {
+//     print(`- Deck ${deck._id} teve ${deck.derrotas} derrota(s) com esse combo.`);
+//   });
+// }

@@ -32,3 +32,21 @@ async function avgTrophiesByLevel() {
 }
 
 avgTrophiesByLevel();
+
+// ABAIXO SCRIPT DE CADA CONSULTA PARA RODAR NO SHELL DO MONGODB
+
+// const resultado = db.players.aggregate([
+//   {
+//     $group: {
+//       _id: "$level",
+//       avgTrophies: { $avg: "$trophies" },
+//       totalPlayers: { $sum: 1 }
+//     }
+//   },
+//   { $sort: { _id: 1 } }
+// ]).toArray();
+
+// print("🎯 Média de troféus por nível:");
+// resultado.forEach(r => {
+//   print(`Nível ${r._id} → Média de troféus: ${r.avgTrophies.toFixed(2)} (Jogadores: ${r.totalPlayers})`);
+// });

@@ -48,3 +48,37 @@ async function mostUsedCards() {
 }
 
 mostUsedCards();
+
+// ABAIXO SCRIPT DE CADA CONSULTA PARA RODAR NO SHELL DO MONGODB
+
+// const resultado = db.decks.aggregate([
+//   { $unwind: "$cards" },
+//   {
+//     $group: {
+//       _id: "$cards",
+//       count: { $sum: 1 }
+//     }
+//   },
+//   {
+//     $lookup: {
+//       from: "cards",
+//       localField: "_id",
+//       foreignField: "_id",
+//       as: "cardInfo"
+//     }
+//   },
+//   { $unwind: "$cardInfo" },
+//   {
+//     $project: {
+//       _id: 0,
+//       name: "$cardInfo.name",
+//       count: 1
+//     }
+//   },
+//   { $sort: { count: -1 } }
+// ]).toArray();
+
+// print("🃏 Cartas mais usadas em decks:");
+// resultado.forEach(c => {
+//   print(`- ${c.name}: usada em ${c.count} decks`);
+// });

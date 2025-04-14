@@ -30,3 +30,17 @@ async function avgBattleDuration() {
 }
 
 avgBattleDuration();
+
+// ABAIXO SCRIPT DE CADA CONSULTA PARA RODAR NO SHELL DO MONGODB
+// const resultado = db.battles.aggregate([
+//   {
+//     $group: {
+//       _id: null,
+//       avgDuration: { $avg: "$durationSec" },
+//       totalBattles: { $sum: 1 }
+//     }
+//   }
+// ]).toArray();
+
+// const dur = resultado[0];
+// print(`⏱️ Duração média das batalhas: ${dur.avgDuration.toFixed(2)} segundos (Total: ${dur.totalBattles} batalhas)`);
