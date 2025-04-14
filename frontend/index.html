@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estatísticas Clash Royale</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📊 Estatísticas de Batalhas</h1>
+      <p>Análise de cartas, decks, vitórias e mais!</p>
+    </header>
+
+    <div class="input-group">
+      <input type="text" id="cartaInput" placeholder="Digite o nome da carta" />
+      <button onclick="consultarWinRateCarta()">Ver Winrate</button>
+    </div>
+
+    <div class="btn-group">
+      <button onclick="consultarDecksVitoriosos()">🏅 Decks Vitoriosos</button>
+      <button onclick="buscarDerrotasPorCombo()">💥 Derrotas por Combo</button>
+      <button onclick="buscarDecksComMaisTrofeus()">🥇 Decks que venceram mais fortes</button>
+      <button onclick="buscarMediaTempoBatalha()">⏱️ Média por Raras</button>
+      <button onclick="buscarMediaTrofeus()">📶 Média Troféus por Nível</button>
+      <button onclick="buscarCartasMaisUsadas()">🃏 Cartas Mais Usadas</button>
+      <button onclick="buscarDuracaoMedia()">⏳ Duração Média</button>
+    </div>
+
+    <section id="resultado" class="resultado">
+      <!-- Resultados das consultas serão inseridos aqui -->
+    </section>
+
+    <!-- Modal de Alerta -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span id="closeBtn" class="close">&times;</span>
+        <p id="modalMessage"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

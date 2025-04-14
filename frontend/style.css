@@ -1,0 +1,143 @@
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f3f4f6, #e5e7eb);
+    color: #111827;
+    padding: 2rem;
+  }
+  
+  /* Container principal */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Cabeçalho */
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    color: #1f2937;
+  }
+  
+  header p {
+    color: #6b7280;
+  }
+  
+  /* Inputs */
+  .input-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-group input {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    width: 60%;
+    font-size: 1rem;
+  }
+  
+  .input-group button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .input-group button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  /* Botões */
+  .btn-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-group button {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-group button:hover {
+    background-color: #059669;
+  }
+  
+  /* Resultados */
+  .resultado {
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 2px #e5e7eb;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+  
+  .resultado h2 {
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+  
+  .resultado p {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .deck {
+    background-color: #f3f4f6;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  th, td {
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid #d1d5db;
+  }
+  
+  th {
+    background-color: #e5e7eb;
+    color: #111827;
+    font-weight: 600;
+  }
+  
+  ul {
+    padding-left: 1.25rem;
+    list-style-type: disc;
+  }
+  
